@@ -78,21 +78,6 @@ body {
 }
 
 
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -132,3 +117,11 @@ body {
     margin-top: 120px;
   }
 }
+
+
+footer {
+    position : absolute;
+    bottom : 0;
+    height : 40px;
+    margin-top : 40px;
+  }
