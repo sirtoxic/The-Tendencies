@@ -17,7 +17,7 @@ if (!empty($_POST['username'])&& !empty($_POST['password'])) {
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])){
-        $_SESSION['user_id']= $results['username'];
+        $_SESSION['user_id']= $results['u_name'];
         header("Location: ../admin/admin.php");
         $message = 'logged in';
     } else {
