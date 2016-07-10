@@ -44,6 +44,12 @@
                         <a href="../admin/deleteuser.php"><i class="fa fa-user-times"></i> Delete User</a>
                     </li>
                     <li>
+                        <a href="../admin/createpost.php"><i class="fa fa-plus-square-o"></i> Create Post</a>
+                    </li>
+                    <li>
+                        <a href="../admin/editpost.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
