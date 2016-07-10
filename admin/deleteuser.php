@@ -10,24 +10,23 @@ require 'db.php';
 
 $message = '';
 
-if (!empty($_POST['email'])&& !empty($_POST['password'])) {
-    $sql = "INSERT INTO administrators (f_name, l_name, u_name, password, email, phone) VALUES (:firstname, :lastname, :username, :password, :email, :phone)";
-    $statment = $conn->prepare($sql);
- 
-    $statment->bindParam(':username',$_POST['username']); 
- 
+if (!empty($_POST['username'])&& !empty($_POST['confirmUser'])) {
+    $records = $conn->prepare('SELECT ID, u_name FROM administrators WHERE u_name = :username');
+    $records->bindParam(':username',$_POST['username']);  
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    if ($statment->execute()) {
-        $message = "<div class=\"alert alert-success\" role=\"alert\">
-                        <strong>Well done!</strong> Successfully Created User
-                    </div>";
-    } else {
-        $message = "<div class=\"alert alert-danger\" role=\"alert\">
-                        <strong>Error!</strong> Somthing whent wrong :S
-                    </div>";
-    }
+    $idDelete = $results['ID'];
+    $userDelete = $results['u_name'];
+
+    $removeRecord = $conn->prepare('DELETE FROM administrators WHERE ID = :userID');
+    $removeRecord->bindParam(':userID',$idDelete);  
+    $removeRecord->execute();
+
+    $message = "<div class=\"alert alert-success\" role=\"alert\">
+    \"Successfully Deleted User with ID <b>".$idDelete."</b> and Username <b>".$userDelete."</b>
+    </div>";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -95,14 +94,14 @@ if (!empty($_POST['email'])&& !empty($_POST['password'])) {
                 </div>
                 <!-- /.row -->
 
-                <form action="createuser.php" method="POST">
+                <form action="deleteuser.php" method="POST">
                     <div class="input-group">
                         <h4>Username</h4>
-                        <input type="text" class="form-control" placeholder="Userame" aria-describedby="sizing-addon2" name="username">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="username">
                     </div>
                         <div class="input-group">
                         <h4>Confirm Username</h4>
-                        <input type="text" class="form-control" placeholder="Userame" aria-describedby="sizing-addon2" name="username">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" name="confirmUser">
                     </div>
                     <br>
                     <input class="btn btn-primary btn-lg" type="submit">
