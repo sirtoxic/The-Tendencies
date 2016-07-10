@@ -80,6 +80,12 @@ if (!empty($_POST['email'])&& !empty($_POST['password'])) {
                     <li>
                         <a href="../admin/deleteuser.php"><i class="fa fa-user-times"></i> Delete User</a>
                     </li>
+                    <li>
+                        <a href="../admin/createpost.php"><i class="fa fa-plus-square-o"></i> Create Post</a>
+                    </li>
+                    <li>
+                        <a href="../admin/editpost.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
