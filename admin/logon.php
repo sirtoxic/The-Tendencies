@@ -5,7 +5,7 @@ if( isset($_SESSION['user_id']) ){
     header("Location: ../admin/admin.php");
 }
 
-require 'db.php';
+require '../scripts/db.php';
 
 $message = '';
 
