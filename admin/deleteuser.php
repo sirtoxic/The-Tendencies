@@ -78,7 +78,7 @@ if (!empty($_POST['username'])&& !empty($_POST['confirmUser'])) {
                         <a href="../admin/createpost.php"><i class="fa fa-plus-square-o"></i> Create Post</a>
                     </li>
                     <li>
-                        <a href="../admin/editpost.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
+                        <a href="../admin/editpostlist.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
                     </li>
                 </ul>
             </div>
