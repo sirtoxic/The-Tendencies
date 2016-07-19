@@ -6,7 +6,6 @@ function displayPosts(){
 	require 'db.php';
 	$records = $conn->prepare('SELECT ALL * FROM `posts` WHERE `p_visable` = 1 ORDER BY `p_date`DESC');
     $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
 
 	while($result = $records->fetch(PDO::FETCH_ASSOC)) {
 		$postID = $result['p_ID'];	
@@ -34,7 +33,6 @@ function displayPostEdit(){
 	require 'db.php';
 	$records = $conn->prepare('SELECT ALL * FROM `posts` WHERE 1 ORDER BY `p_date`DESC');
     $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
 
     echo 	"<table class=\"table table-striped\">
             	<thead>
