@@ -83,7 +83,7 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
                         <a href="../admin/createpost.php"><i class="fa fa-plus-square-o"></i> Create Post</a>
                     </li>
                     <li>
-                        <a href="../admin/editpost.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
+                        <a href="../admin/editpostlist.php"><i class="fa fa-pencil-square-o"></i> Edit Post</a>
                     </li>
                 </ul>
             </div>
@@ -112,6 +112,23 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
                     </div>
                     <div class="input-group col-xs-6">
                         <h4>Post Content</h4>
+                        
+                        <h4><a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-bold"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<i></i>');return false;"><i class="fa fa-italic"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<u></u>');return false;"><i class="fa fa-underline"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<s></s>');return false;"><i class="fa fa-strikethrough"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<img class=&quot;&quot; src=&quot;&quot; hight=&quot;&quot; width=&quot;&quot;>');return false;"><i class="fa fa-picture-o"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<a href=&quot;&quot;></a>');return false;"><i class="fa fa-link"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;&quot; frameborder=&quot;0&quot; allowfullscreen></iframe>');return false;"><i class="fa fa-television"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-list"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<p></p>');return false;"><i class="fa fa-paragraph"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<h4></h4>');return false;"><i class="fa fa-header"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-list-ol"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<br>');return false;"><i class="fa fa-level-down"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-envelope-o"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-paint-brush"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-file"></a></i></h4>
+
                         <textarea class="form-control" rows="5" id="comment" name="content" placeholder="Type Post Content here"></textarea>
                     </div>
                     <input type="hidden" name="visable" value="0"> 
@@ -129,7 +146,7 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
-
+    <script src="../scripts/textToFeild.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 </body>
