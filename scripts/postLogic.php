@@ -27,8 +27,6 @@ function displayPosts(){
 	}
 }
 
-
-
 function displayPostEdit(){
 	require 'db.php';
 	$records = $conn->prepare('SELECT ALL * FROM `posts` WHERE 1 ORDER BY `p_date`DESC');
@@ -43,6 +41,7 @@ function displayPostEdit(){
                 		<th>Creator</th>
                 		<th>Date</th>
                 		<th>Visable</th>
+                		<th>Edit</th>
               		</tr>
             	</thead>
             <tbody>";
@@ -63,6 +62,12 @@ function displayPostEdit(){
                 	<td>".$result['p_creator']."</td>
                 	<td>".$result['p_date']."</td>
                 	<td>".$result['p_visable']."</td>
+                	<td>
+                		<form action=\"editpost.php\" method=\"get\">
+						<input type=\"hidden\" name=\"postID\"value=\"".$result['p_ID']."\" >
+						<input type=\"submit\" value=\"Edit\">
+						</form>
+					</td>
               	</tr>";
     }
     echo "</tbody>

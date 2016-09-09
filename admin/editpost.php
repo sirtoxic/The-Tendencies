@@ -1,24 +1,37 @@
 <?php
 
 session_start();
-
+require '../scripts/postLogic.php';
 require '../scripts/db.php';
 
 //if( !isset($_SESSION['user_id']) ){
    // header("Location: ../admin/admin.php");
 //}
 
-$message = '';
+//$message = $_GET['postID'];
+$postTitle = "";
+
+ if (!empty($_GET['postID'])) {
+    
+    $records = $conn->prepare("SELECT * FROM `posts` WHERE `p_ID`=".$_GET['postID']);
+    $records->execute();
+
+    while($result = $records->fetch(PDO::FETCH_ASSOC)) {
+        $postID = $result['p_ID'];  
+        $postCreator = $result['p_creator'];
+        $postDate = $result['p_date'];  
+        $postTitle = $result['p_title'];
+        $postContent = $result['p_content'];
+    }
+}
 
 if (!empty($_POST['content'])&& !empty($_POST['title'])) {
-    $sql = "INSERT INTO posts (p_creator, p_title, p_content, p_visable) VALUES (:creator, :title, :content, :visable)";
-
+    $sql = "UPDATE `posts` SET `p_title` = \'Test 18\', `p_content` = \'Editing content changed title added text\' WHERE `posts`.`p_ID` = 19";
+    
     $statment = $conn->prepare($sql);
 
-    $statment->bindParam(':creator',$_SESSION['user_id']); 
-    $statment->bindParam(':title',$_POST['title']); 
-    $statment->bindParam(':content',$_POST['content']); 
-    $statment->bindParam(':visable',$_POST['visable']); 
+    //$statment->bindParam(':title',$_POST['title']); 
+    //$statment->bindParam(':content',$_POST['content']); 
 
     if ($statment->execute()) {
         $message = "<div class=\"alert alert-success\" role=\"alert\">
@@ -30,6 +43,7 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
                     </div>";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -103,10 +117,10 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
                 </div>
                 <!-- /.row -->
 
-                <form action="createpost.php" method="POST">
+                <form action="editpost.php" method="POST">
                     <div class="input-group">
                         <h4>Post Title</h4>
-                        <input type="text" class="form-control" placeholder="Post Title" aria-describedby="sizing-addon2" name="title">
+                        <input type="text" class="form-control" aria-describedby="sizing-addon2" name="title" value="<?php echo $postTitle; ?>">
                     </div>
                     <div class="input-group col-xs-6">
                         <h4>Post Content</h4>
@@ -123,11 +137,11 @@ if (!empty($_POST['content'])&& !empty($_POST['title'])) {
                         <a href="#" onclick="insertAtCaret('comment','<h4></h4>');return false;"><i class="fa fa-header"></a></i>
                         <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-list-ol"></a></i>
                         <a href="#" onclick="insertAtCaret('comment','<br>');return false;"><i class="fa fa-level-down"></a></i>
-                        <a href="#" onclick="insertAtCaret('comment','<a href=&quot;[Email]&quot;>[Link Text]</a>');return false;"><i class="fa fa-envelope-o"></a></i>
-                        <a href="#" onclick="insertAtCaret('comment',' <font color=&quot;red&quot;></font> ');return false;"><i class="fa fa-paint-brush"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-envelope-o"></a></i>
+                        <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-paint-brush"></a></i>
                         <a href="#" onclick="insertAtCaret('comment','<b></b>');return false;"><i class="fa fa-file"></a></i></h4>
 
-                        <textarea class="form-control" rows="5" id="comment" name="content" placeholder="Type Post Content here"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" name="content" placeholder="Type Post Content here" value="<?php echo $postContent; ?>"></textarea>
                     </div>
                     <input type="hidden" name="visable" value="0"> 
                     <input type="checkbox" name="visable" checked value="1"> Post Visable 

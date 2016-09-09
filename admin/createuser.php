@@ -45,7 +45,7 @@ if (!empty($_POST['email'])&& !empty($_POST['password'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>The Tendencies Administration Pannel</title>
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -66,7 +66,7 @@ if (!empty($_POST['email'])&& !empty($_POST['password'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">The Tendencies Administration Pannel</a>
+                <a class="navbar-brand" href="admin.php">The Tendencies Administration Pannel</a>
             </div>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
